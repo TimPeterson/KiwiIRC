@@ -102,6 +102,11 @@ _kiwi.model.Application = function () {
 
             };
             _kiwi.gateway.on('onconnect', fn);
+
+            // Auto connect
+            if (getQueryVariable('autoconnect')) {
+                connection_dialog.view.$el.find('form').submit();
+            }
         };
 
 
