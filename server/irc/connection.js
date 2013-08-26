@@ -55,7 +55,7 @@ var IrcConnection = function (hostname, port, ssl, nick, user, options, state, c
     // User information
     this.nick = nick;
     this.user = user;  // Contains users real hostname and address
-    this.username = this.nick.replace(/[^0-9a-zA-Z\-_.\/]/, '');
+    this.username = global.config.fixed_username || this.nick.replace(/[^0-9a-zA-Z\-_.\/]/, '');
     this.password = options.password || '';
 
     // Set the passed encoding. or the default if none giving or it fails

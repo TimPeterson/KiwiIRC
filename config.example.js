@@ -48,6 +48,8 @@ conf.identd = {
 };
 
 
+// Use a fixed username instead of copying nick
+//conf.fixed_username = 'KiwiIRC';
 
 
 
