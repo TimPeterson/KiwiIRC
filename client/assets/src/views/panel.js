@@ -89,6 +89,23 @@ _kiwi.view.Panel = Backbone.View.extend({
         });
 
 
+        // Convert smilies to images
+        RegExp_escape = function(s) {
+                return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+        };
+        smilies = _kiwi.app.server_settings.client.smilies;
+        regex = new RegExp(_.keys(smilies).map(RegExp_escape).join('|'));
+        msg.msg = msg.msg.replace(regex, function (text) {
+            var smiley = smilies[text];
+            var file = smiley[0];
+            var width = smiley[1];
+            var height = smiley[2];
+            return '<img src="' + _kiwi.app.get('base_path') + '/assets/img/smilies/' + file +
+                '" alt="' + text + '" title="' + text +
+                '" width="' + width + '" height="' + height + '"/>';
+        });
+
+
         // Convert IRC formatting into HTML formatting
         msg.msg = formatIRCMsg(msg.msg);
 

@@ -191,6 +191,9 @@ conf.client = {
         show_joins_parts: true,
         show_timestamps: false,
         mute_sounds: false
+    },
+    smilies: {
+        ":)": ["smile.gif", 15, 15],
     }
 };
 
